@@ -1,0 +1,186 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Wallet MicroService",
+        "description": "MicroService to manage wallet-keys",
+        "license": {
+            "name": "Leewayhertz",
+            "url": "http://leewayhertz.com"
+        }
+    },
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/": {
+          "get": {
+            "summary": "Get service status",
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          }
+        },
+        "/create-project": {
+          "post": {
+            "summary": "Create a project",
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {} 
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          }
+        },
+        "/projects": {
+          "get": {
+            "summary": "Get projects",
+            "security": [
+              {
+                "BearerAuth": []
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          },
+          "put": {
+            "summary": "Update a project",
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          },
+          "delete": {
+            "summary": "Delete a project",
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          }
+        },
+        "/create-task": {
+          "post": {
+            "summary": "Create a task",
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          }
+        },
+        "/task": {
+          "get": {
+            "summary": "Get tasks",
+            "security": [
+              {
+                "BearerAuth": []
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          },
+          "put": {
+            "summary": "Update a task",
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          },
+          "delete": {
+            "summary": "Delete a task",
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          }
+        },
+        "/create-user": {
+          "post": {
+            "summary": "Create a user",
+            "security": [
+              {
+                "BearerAuth": []
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          }
+        },
+        "/user": {
+          "get": {
+            "summary": "Get user details",
+            "security": [
+              {
+                "BearerAuth": []
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successful response"
+              }
+            }
+          }
+        }
+      }
+    }
+    

@@ -62,13 +62,13 @@ async getUserDetails (requestData){
   async updateTask(requestData) {
     LHTLogger.info('JobManager:update  Project', 'update Project', 'Akshay');
 
-    let project = await Task.findOne({ id: requestData.param.id });
+    let project = await Task.findOne({ _id: requestData.body.id });
     if (!project) {
       throw apiFailureMessage.PROJECT_DOESNT_EXISTS;
     }
 
     let updatedData = await Task.findOneAndUpdate(
-      { id: requestData.param.id },
+      { _id: requestData.body.id },
       requestData.body,
       { new: true }
     );
