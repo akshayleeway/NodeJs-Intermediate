@@ -10,9 +10,9 @@ export default class Manger {
   }
 
   async createTask(requestData) {
-    LHTLogger.info('JobManager:createProject', 'createProject', 'Akshay');
+    LHTLogger.info('JobManager:createProject', 'create task ', 'Akshay');
 
-    LHTLogger.info('JobManager:createdProject', 'createdProject', 'Akshay');
+    LHTLogger.info('JobManager:createdProject', 'created task', 'Akshay');
 
     const project = await Task.findOne({
       title: requestData.body.title,
@@ -20,7 +20,7 @@ export default class Manger {
 
     // console.log('Project', project);
     if (project) {
-      throw apiFailureMessage.PROJECT_EXISTS;
+      throw apiFailureMessage.TASK_EXISTS;
     }
 
     return new Task({ ...requestData.body }).save();
@@ -28,9 +28,9 @@ export default class Manger {
 
 
   async deleteTask(requestData) {
-    LHTLogger.info('JobManager:delete Project', 'delete Project', 'Akshay');
+    LHTLogger.info('JobManager:delete Project', 'delete task', 'Akshay');
 
-    LHTLogger.info('JobManager:delete Project', 'delete Project', 'Akshay');
+    LHTLogger.info('JobManager:delete Project', 'delete task', 'Akshay');
 
     const project = await Task.findOne({
       title: requestData.body.title,
@@ -38,21 +38,21 @@ export default class Manger {
 
     // console.log('Project', project);
     if (!project) {
-      throw apiFailureMessage.PROJECT_DOESNT_EXISTS;
+      throw apiFailureMessage.TASK_DOESNT_EXISTS;
     }
 
     return Task.findOneAndDelete({ title: requestData.body.title });
   }
 
   async getTask() {
-    LHTLogger.info('JobManager:get Project', 'get Project', 'Akshay');
+    LHTLogger.info('JobManager:get Project', 'get task', 'Akshay');
 
     return Task.find();
   }
 
 
 async getUserDetails (requestData){
-  LHTLogger.info('JobManager:get Project', 'get Project', 'Akshay');
+  LHTLogger.info('JobManager:get Project', 'get specific task', 'Akshay');
   const tasks = await Task.find({ assignee: requestData.body.assignee });
   // .populate('assignee');
   return tasks;
@@ -60,11 +60,11 @@ async getUserDetails (requestData){
   
 
   async updateTask(requestData) {
-    LHTLogger.info('JobManager:update  Project', 'update Project', 'Akshay');
+    LHTLogger.info('JobManager:update  Project', 'update task', 'Akshay');
 
     let project = await Task.findOne({ _id: requestData.body.id });
     if (!project) {
-      throw apiFailureMessage.PROJECT_DOESNT_EXISTS;
+      throw apiFailureMessage.TASK_DOESNT_EXISTS;
     }
 
     let updatedData = await Task.findOneAndUpdate(

@@ -86,4 +86,7 @@ export const apiFailureMessage = {
   SESSION_EXPIRED: 'Session Expired!',
   PROJECT_EXISTS: 'Project Exists',
   PROJECT_DOESNT_EXISTS: 'Project Doesnt Exist',
+  TASK_EXISTS: 'Task Exists',
+  TASK_DOESNT_EXISTS: 'Task Doesnt Exist',
+  USER_EXISTS: 'User Exists',
 };

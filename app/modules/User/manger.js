@@ -1,9 +1,9 @@
 import LHTLogger from '../../utils/logger';
 import User from '../../models/User';
 import { apiFailureMessage } from '../../common/constants';
+import secretKey  from '../../../config/env/development';
 const jwt = require('jsonwebtoken');
-const secretKey =
-  '9bfe60120bff251210dc7c9181508f138d08c899d58375b3d837293330727b587d467170df859a64211d796b2ff290fda4b56f64fcf37f694c14a237c59b7cfb'; // Replace this with your actual secret key
+
 
 export default class Manger {
   async abcd() {
@@ -14,9 +14,9 @@ export default class Manger {
 
   async createUser(requestData) {
     let data = {};
-    LHTLogger.info('JobManager:createProject', 'createProject', 'Akshay');
+    LHTLogger.info('JobManager:createProject', 'create user', 'Akshay');
 
-    LHTLogger.info('JobManager:createdProject', 'createdProject', 'Akshay');
+    LHTLogger.info('JobManager:createdProject', 'created user', 'Akshay');
 
     const project = await User.findOne({
       email: requestData.body.email,
@@ -24,11 +24,11 @@ export default class Manger {
 
     // console.log('Project', project);
     if (project) {
-      throw apiFailureMessage.PROJECT_EXISTS;
+      throw apiFailureMessage.USER_EXISTS;
     }
 
     if( requestData.body.userType == 'admin'){
-
+    
    const token =  await this.generate( requestData.body.userType);
    data.token = token ;
     }
@@ -40,7 +40,7 @@ export default class Manger {
   async  generate(request) {
     const sampleUserData = { userType: request };
 
-    const token = jwt.sign(sampleUserData, secretKey, { expiresIn: '2h' });
+    const token = jwt.sign(sampleUserData, secretKey.JWT_SECRET_KEY, { expiresIn: '2h' });
 
     return token;
   }

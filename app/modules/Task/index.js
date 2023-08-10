@@ -21,7 +21,7 @@ export default class Index {
       new BLManager().createTask(request)
     );
 
-    LHTLogger.info('createProject', 'After createUser', testResponse);
+    LHTLogger.info('createProject', 'After createtask ', testResponse);
     if (error || !testResponse) return HTTPHandler.error(response, error);
     return HTTPHandler.success(response, testResponse);
   }
@@ -33,7 +33,7 @@ export default class Index {
       new BLManager().deleteTask(request)
     );
 
-    LHTLogger.info('createProject', 'After createUser', data);
+    LHTLogger.info('createProject', 'After delete User', data);
     if (error || !data) return HTTPHandler.error(response, error);
     return HTTPHandler.success(response, data);
   }
@@ -45,13 +45,13 @@ export default class Index {
       new BLManager().getTask(request)
     );
 
-    LHTLogger.info('createProject', 'After createUser', data);
+    LHTLogger.info('get task', 'After createUser', data);
     if (error || !data) return HTTPHandler.error(response, error);
     return HTTPHandler.success(response, data);
   }
 
   async updateTask(request, response) {
-    LHTLogger.info('update Project', 'Before Updated', request.body);
+    LHTLogger.info('update task', 'Before Updated', request.body);
 
     const [error, data] = await Utils.parseResponse(
       new BLManager().updateTask(request)
